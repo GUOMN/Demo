@@ -1,0 +1,7 @@
+server:
+  port: 80
+
+regexUtil:
+  patternList:
+    - ^[\w]{4,}@t.email$
+    - ^[\w]{4,}@g.email$
