@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 AtValue4Static:
   staticVar: var1
   staticVar2: var2
