@@ -1,0 +1,36 @@
+{
+    "mappings": [
+        {
+            "id": "20452ea9-5f9c-4b4c-87b6-8802abf358b6",
+            "request": {
+                "url": "/hello",
+                "method": "GET",
+                "headers": {
+                    "x-auth-token": {
+                        "contains": "123"
+                    }
+                }
+            },
+            "response": {
+                "status": 200,
+                "body": "hello\n"
+            },
+            "uuid": "20452ea9-5f9c-4b4c-87b6-8802abf358b6"
+        },
+        {
+            "id": "5e69ff41-bcb0-43be-ba23-d99f818115e4",
+            "request": {
+                "url": "/more",
+                "method": "GET",
+            },
+            "response": {
+                "status": 200,
+                "body": "More content\n"
+            },
+            "uuid": "5e69ff41-bcb0-43be-ba23-d99f818115e4"
+        }
+    ],
+    "meta": {
+        "total": 2
+    }
+}

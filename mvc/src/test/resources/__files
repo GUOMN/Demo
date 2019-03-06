@@ -1,0 +1,16 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/hello",
+        "headers": {
+            "x-auth-token": {
+                "contains": "123"
+            }
+        }
+
+    },
+    "response": {
+        "status": 200,
+        "body": "Hell World\n"
+    }
+}
