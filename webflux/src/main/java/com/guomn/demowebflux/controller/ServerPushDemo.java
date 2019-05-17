@@ -4,6 +4,7 @@ import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.util.function.Tuples;
 
 import java.time.Duration;
@@ -25,5 +26,9 @@ public class ServerPushDemo {
 						.id(Long.toString(data.getT1()))
 						.data(data.getT2())
 						.build());
+	}
+	@GetMapping("monoNum")
+	public Mono<Integer> randomNumbers1() {
+		return Mono.fromSupplier(() -> ThreadLocalRandom.current().nextInt());
 	}
 }
