@@ -14,6 +14,6 @@ public class HealthchkController {
 
 	@GetMapping("/healthchk")
 	public Mono<String> healthchk(){
-		return Mono.just("health check is OK!").delayElement(Duration.ofMillis(10));
+		return Mono.just("health check is OK!").delayElement(Duration.ofMillis(100));
 	}
 }

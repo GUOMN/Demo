@@ -13,7 +13,7 @@ public class HealthchkController {
 
 	@GetMapping("/healthchk")
 	public String healthchk() throws InterruptedException {
-		sleep(10);
+		sleep(100);
 		return "OK";
 	}
 }
