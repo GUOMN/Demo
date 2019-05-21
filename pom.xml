@@ -26,6 +26,7 @@
         <module>mvc</module>
         <module>leetcode</module>
         <module>Pattern</module>
+        <module>AWS-SAM</module>
     </modules>
 
     <properties>
