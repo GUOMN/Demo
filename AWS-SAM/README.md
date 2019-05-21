@@ -1,6 +1,6 @@
-# AWS
+# sam-app
 
-This is a sample template for AWS - Below is a brief explanation of what we have generated for you:
+This is a sample template for sam-app - Below is a brief explanation of what we have generated for you:
 
 ```bash
 ├── README.md                                   <-- This instructions file
@@ -94,7 +94,7 @@ Next, the following command will create a Cloudformation Stack and deploy your S
 ```bash
 sam deploy \
     --template-file packaged.yaml \
-    --stack-name aws \
+    --stack-name sam-app \
     --capabilities CAPABILITY_IAM
 ```
 
@@ -104,7 +104,7 @@ After deployment is complete you can run the following command to retrieve the A
 
 ```bash
 aws cloudformation describe-stacks \
-    --stack-name aws \
+    --stack-name sam-app \
     --query 'Stacks[].Outputs'
 ```
 
@@ -131,12 +131,12 @@ sam package \
 
 sam deploy \
     --template-file packaged.yaml \
-    --stack-name aws \
+    --stack-name sam-app \
     --capabilities CAPABILITY_IAM \
     --parameter-overrides MyParameterSample=MySampleValue
 
 aws cloudformation describe-stacks \
-    --stack-name aws --query 'Stacks[].Outputs'
+    --stack-name sam-app --query 'Stacks[].Outputs'
 ```
 
 ## Bringing to the next level
