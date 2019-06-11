@@ -1,5 +1,6 @@
 package com.guomn.lambda;
 
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -25,7 +26,8 @@ public class DemoTest {
     /**
      * Supplier的用法
      */
-    private static void testSuppliser(Supplier<String> supplier){
+    private static void testSuppliser(){
+        Supplier<String> supplier = () -> "this is a suppliser demo";
         System.out.println(supplier.get());
     }
 
@@ -37,13 +39,21 @@ public class DemoTest {
         System.out.println(predicate.test(param));
     }
 
+    /**
+     * Consumer的用法
+     */
+    private static void testConsumer(String param){
+        Consumer<String> consumer = s -> System.out.println(s);
+        consumer.accept(param);
+    }
 
     public static void main(String[] args) {
         testFunction(匿名内部类());
         testFunction(lambda());
 
-        testSuppliser(() -> "this is a suppliser demo");
+        testSuppliser();
         testPredicate("aaa");
+        testConsumer("this is a consumer");
 
     }
 }
