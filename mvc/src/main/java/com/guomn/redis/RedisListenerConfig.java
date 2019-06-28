@@ -13,25 +13,33 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
  */
 @Configuration
 public class RedisListenerConfig {
+
+  private RedisMessageListenerContainer container;
   @Value("${spring.redis.database}")
   private int dbNmuber;
 
+  /**
+   * PSUBSCRIBE 可以使用通配符
+   * E:event-->监听一个动作的所有key(__keyevent@0__:expired)
+   * K:space-->监听一个key的所有动作(__keyspace@0__:a*)
+   * x:过期事件
+   */
   private final String REDIS_PSUBSCRIBE = "__keyspace@*__:oss:domain:delete:*"; //所有DB
   private String REDIS_PSUBSCRIBE_PREFIX = REDIS_PSUBSCRIBE.replace("__keyspace@*__", "__keyspace@"+ dbNmuber + "__");
 
   @Bean
   RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory) {
 
-    RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+    this.container = new RedisMessageListenerContainer();
     container.setConnectionFactory(connectionFactory);
-    /**
-     * PSUBSCRIBE 可以使用通配符
-     * E:event-->监听一个动作的所有key(__keyevent@0__:expired)
-     * K:space-->监听一个key的所有动作(__keyspace@0__:a*)
-     * x:过期事件
-     */
-    container.addMessageListener(new RedisListener(REDIS_PSUBSCRIBE_PREFIX), new PatternTopic(REDIS_PSUBSCRIBE_PREFIX));
+    addMessageListeners();
     return container;
+  }
+
+  private void addMessageListeners(){
+    container.addMessageListener(
+        RedisListener.getListener(REDIS_PSUBSCRIBE_PREFIX, (key) -> System.out.println(key)),
+        new PatternTopic(REDIS_PSUBSCRIBE_PREFIX));
   }
 
 }
